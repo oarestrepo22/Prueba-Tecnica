@@ -11,8 +11,9 @@ const ToDoSchema = Schema({
     dueDate: {
         type: String,
     },
-    state: {
-        enum: ['created', 'deleted'],
+    active: {
+        type: Boolean,
+        default: true,
     },
     // Agregar un campo para la referencia al usuario que creó la tarea
     createdBy: {

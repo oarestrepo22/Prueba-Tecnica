@@ -5,7 +5,7 @@
 const { Router } = require('express');
 const { check } = require('express-validator');
 const { fieldValidate } = require('../middlewares/fieldValidate');
-const { createUser, createToDo } = require('../controllers/authController');
+const { createUser } = require('../controllers/userController');
 
 const router = Router();
 
@@ -24,7 +24,5 @@ router.post(
     ],
     createUser
 );
-
-router.post('/:uid/todos', createToDo);
 
 module.exports = router;
