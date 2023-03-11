@@ -5,14 +5,11 @@
 const { Router } = require('express');
 const { check } = require('express-validator');
 const { fieldValidate } = require('../middlewares/fieldValidate');
-const {
-    createUser,
-    loginUser,
-    //revalidarToken,
-} = require('../controllers/authController');
-//const { validarJWT } = require('../middlewares/validar-jwt');
+const { createUser, createToDo } = require('../controllers/authController');
 
 const router = Router();
+
+router.get('/');
 
 router.post(
     '/new',
@@ -28,6 +25,6 @@ router.post(
     createUser
 );
 
-router.get('/');
+router.post('/:uid/todos', createToDo);
 
 module.exports = router;

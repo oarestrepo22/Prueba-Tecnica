@@ -9,10 +9,15 @@ const ToDoSchema = Schema({
         type: String,
     },
     dueDate: {
-        type: Date,
+        type: String,
     },
     state: {
-        type: String,
+        enum: ['created', 'deleted'],
+    },
+    // Agregar un campo para la referencia al usuario que creó la tarea
+    createdBy: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
     },
 });
 
