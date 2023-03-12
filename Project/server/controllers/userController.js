@@ -1,6 +1,5 @@
 const { response } = require('express');
 const User = require('../models/User');
-const ToDo = require('../models/ToDo');
 
 const createUser = async (req, res = response) => {
     const { email } = req.body;
