@@ -4,6 +4,7 @@ const { fieldValidate } = require('../middlewares/fieldValidate');
 const {
     createToDo,
     getToDosByUserId,
+    updateToDo,
 } = require('../controllers/toDoController');
 const router = Router();
 
@@ -14,5 +15,11 @@ router.post(
 );
 
 router.get('/:uid/todos', getToDosByUserId);
+
+router.put(
+    '/todos/:id',
+    [check('title', 'El titulo es obligatorio').not().isEmpty(), fieldValidate],
+    updateToDo
+);
 
 module.exports = router;

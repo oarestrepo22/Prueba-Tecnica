@@ -16,7 +16,7 @@ const createToDo = async (req, res = response) => {
         }
 
         // Crear la tarea con la referencia al usuario que la creó
-        const toDo = new ToDo(req.body);
+        const toDo = new ToDo(req.body, (req.body.createdBy = uid));
 
         await toDo.save();
 
@@ -35,16 +35,32 @@ const createToDo = async (req, res = response) => {
 
 const getToDosByUserId = async (req, res = response) => {
     try {
-        const userId = req.params.userId;
-        const tasks = await ToDo.find({ userId: userId });
+        const { uid } = req.params;
+        const tasks = await ToDo.find({ createdBy: uid });
         res.json(tasks);
     } catch (err) {
-        res.status(500).json({ message: err.message });
+        res.status(500).json({ msg: 'Hubo un error al encontrar la lista' });
     }
 };
 
+const updateToDo = async (req, res) => {
+    const { id } = req.params;
+    const { title, description, priority, active } = req.body;
 
+    try {
+        const toDo = await ToDo.findByIdAndUpdate(
+            id,
+            { title, description, priority, active },
+            { new: true }
+        );
+        res.json(toDo);
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ msg: 'Hubo un error al actualizar la tarea' });
+    }
+};
 module.exports = {
     createToDo,
     getToDosByUserId,
+    updateToDo,
 };
