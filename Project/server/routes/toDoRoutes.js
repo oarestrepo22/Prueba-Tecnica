@@ -5,6 +5,7 @@ const {
     createToDo,
     getToDosByUserId,
     updateToDo,
+    deleteToDoById,
 } = require('../controllers/toDoController');
 const router = Router();
 
@@ -21,5 +22,7 @@ router.put(
     [check('title', 'El titulo es obligatorio').not().isEmpty(), fieldValidate],
     updateToDo
 );
+
+router.delete( '/todos/:id', deleteToDoById);
 
 module.exports = router;
