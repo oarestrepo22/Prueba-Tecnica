@@ -10,7 +10,7 @@ const app = express();
 dbConnection();
 
 // CORS
-//app.use(cors());
+app.use(cors());
 
 // Directorio Público
 app.use(express.static('public'));
@@ -19,8 +19,8 @@ app.use(express.static('public'));
 app.use(express.json());
 
 // Rutas
-app.use('/api/auth', require('./routes/authRoutes'));
-// TODO: CRUD: Eventos
+app.use('/api/auth', require('./routes/userRoutes'));
+app.use('/api/auth', require('./routes/toDoRoutes'));
 
 // Escuchar peticiones
 app.listen(process.env.PORT, () => {

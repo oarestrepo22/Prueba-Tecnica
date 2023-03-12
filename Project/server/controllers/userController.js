@@ -1,8 +1,9 @@
 const { response } = require('express');
 const User = require('../models/User');
+const ToDo = require('../models/ToDo');
 
 const createUser = async (req, res = response) => {
-    const { email, password } = req.body;
+    const { email } = req.body;
 
     try {
         let user = await User.findOne({ email });
