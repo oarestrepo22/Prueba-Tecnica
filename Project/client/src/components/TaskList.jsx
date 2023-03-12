@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchTasks } from './actions';
-import { selectTasks } from './selectors';
+import { fetchTasks } from '../redux/actions/actions';
+import { selectTasks } from '../redux/actions/selectors';
 import { ListGroup } from 'react-bootstrap';
 
 const TaskList = () => {
