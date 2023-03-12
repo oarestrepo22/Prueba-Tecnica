@@ -12,6 +12,7 @@ router.post(
     [check('title', 'El titulo es obligatorio').not().isEmpty(), fieldValidate],
     createToDo
 );
+
 router.get('/:uid/todos', getToDosByUserId);
 
 module.exports = router;

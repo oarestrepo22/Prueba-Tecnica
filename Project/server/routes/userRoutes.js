@@ -12,7 +12,7 @@ const router = Router();
 router.get('/');
 
 router.post(
-    '/new',
+    '/new-user',
     [
         // middlewares
         check('name', 'El nombre es obligatorio').not().isEmpty(),
